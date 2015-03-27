@@ -42,7 +42,7 @@ public class MainActivityServer extends ActionBarActivity {
         sqliteoperation = new SqlOperations(getApplicationContext());
         sqliteoperation.open();
 
-        tvIP = (TextView) findViewById(R.id.tvIP);
+        tvIP= (TextView) findViewById(R.id.tvIP);
 
         getDeviceIpAddress(); //Ipaddress method.
         doLoopProcess();
@@ -71,7 +71,7 @@ public class MainActivityServer extends ActionBarActivity {
         }
     }
 
-    public void doLoopProcess() {
+    public void doLoopProcess(){
         //Timer with a thread inside to search the status of each table.
         int delay = 100; //is the delay or sleep between every timer loop.
         int period = 10000;//ten seconds
@@ -93,9 +93,11 @@ public class MainActivityServer extends ActionBarActivity {
                                  (1)     number_table          1
                                          kind_of_request       W
                                          request_text           W-MenuDroidTable1
+
                                  (2)    number_table          2
                                          kind_of_request      O
                                          request_text          O-MenuDroidTable1
+
                                  (3)  ....
                                       ....
                                       ...
@@ -116,9 +118,9 @@ public class MainActivityServer extends ActionBarActivity {
                                             Log.d("DictionaryMAinActivity", map.get(KEY_NUMBER_TABLE) + " --- " +
                                                     map.get(KEY_KIND_REQUEST) + "------" +
                                                     map.get(KEY_REQUEST_TEXT)); /*this is a simple log XD, to verify if there is information.*/
-                                            btnTable = chooseTable(Integer.parseInt(map.get(KEY_NUMBER_TABLE).toString()));
+                                            btnTable=chooseTable(Integer.parseInt(map.get(KEY_NUMBER_TABLE).toString()));
                                             //get the capital letter from each Map,
-                                            ChangeColorTable(btnTable, map.get(KEY_KIND_REQUEST).toString().toUpperCase());
+                                            ChangeColorTable(btnTable,map.get(KEY_KIND_REQUEST).toString().toUpperCase());
                                         }
                                     }
                                 });
@@ -129,7 +131,6 @@ public class MainActivityServer extends ActionBarActivity {
                             /*Get possible execption*/
                         }
                     }
-
                     ;
                 };
                 thread.start();
@@ -138,8 +139,8 @@ public class MainActivityServer extends ActionBarActivity {
     }
 
 
-    public Button chooseTable(int number) {
-        Button btnChooseTable = (Button) findViewById(R.id.btn1);
+    public Button chooseTable(int number){
+        Button btnChooseTable=(Button) findViewById(R.id.btn1);
         // GET the value from number_table key form the actual Map. (this map has "key"-"value
         switch (number) {
             //Depending the number is the table (button) that we get to change the color.
@@ -166,7 +167,8 @@ public class MainActivityServer extends ActionBarActivity {
         return btnChooseTable;
     }
 
-    public void ChangeColorTable(Button tableColor, String capitalLetter) {
+    public void ChangeColorTable(Button tableColor, String capitalLetter)
+    {
         if (capitalLetter.equals("B")) {
                                                 /*B- bill = the  color change to yellow*/
             tableColor.setBackgroundResource(R.drawable.main_custom_button_yellow);
@@ -177,7 +179,8 @@ public class MainActivityServer extends ActionBarActivity {
         } else if (capitalLetter.equals("W")) {
                                                 /*W  waiter = the  color change to green  */
             tableColor.setBackgroundResource(R.drawable.main_custom_button_green);
-        } else {
+        }
+        else{
             // If the result is diferrent to B,O,W , the color change to brown
             // TODO I think we dont need to brown button if the table non use so its red
             tableColor.setBackgroundResource(R.drawable.main_custom_button);
